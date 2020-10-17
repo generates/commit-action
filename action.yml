@@ -1,0 +1,25 @@
+name: Commit Action
+description: Automate git commits with GitHub Actions
+author: Ian Walter
+branding:
+  icon: book
+  color: blue
+inputs:
+  branch:
+    description: The git branch you want to commit to.
+    required: false
+  files:
+    description: The changed files you want included in the commit.
+    required: false
+  message:
+    description: The commit message.
+    required: false
+  actor:
+    description: Who to author the commit as.
+    required: false
+  token:
+    description: The GitHub token to use to push the commit to GitHub.
+    required: false
+runs:
+  using: docker
+  image: Dockerfile
