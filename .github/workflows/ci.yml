@@ -16,4 +16,9 @@ jobs:
       - name: Install
         run: pnpm i
       - name: Lint
-        run: pnpm lint
+        run: pnpm lint -- --fix
+      - name: Commit Lint Fixes
+        uses: ./
+        with:
+          token: ${{ secrets.GH_PAT }}
+          message: Lint fixes
