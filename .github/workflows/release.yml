@@ -7,7 +7,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     container:
-      image: node:12.18-buster
+      image: ianwalter/pnpm:v1.1.0
     timeout-minutes: 10
     steps:
       - name: Checkout
@@ -17,10 +17,17 @@ jobs:
           # generate changelogs with the correct commits.
           fetch-depth: 0
       - name: Install
-        run: npm i --dev
+        run: pnpm i
       - name: Changesets
         uses: changesets/action@master
         with:
           publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update Lockfile
+        run: pnpm i
+      - name: Commit Changes
+        uses: ./
+        with:
+          token: ${{ secrets.GH_PAT }}
+        
