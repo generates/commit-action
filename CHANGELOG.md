@@ -1,4 +1,4 @@
-# add-changeset
+# commit-action
 
 ## 1.2.2
 
