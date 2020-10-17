@@ -17,25 +17,33 @@ async function run () {
   if (!branch) branch = process.env.GITHUB_REF
 
   // TODO: check if branch exists and create it if necessary.
+  
+  // Check if there are local changes.
+  const { stdout: hasChanges } = await execa('git', ['status', '--porcelain'])
+  if (hasChanges) {
+    // Add specified files or all changes.
+    const files = process.env.INPUT_FILES
+      ? process.env.INPUT_FILES.split('\n')
+      : '.'
+    await execa('git', ['add', files])
+    
+    // Check if there are staged changes.
+    const { stdout: hasStaged } = await execa('git', ['diff', '--staged'])
+    if (hasStaged) {
+      // Commit the changes.
+      const message = process.env.INPUT_MESSAGE || 'Automated commit'
+      await execa('git', ['commit', '-m', message])
 
-  // Add specified files or all changes.
-  const files = process.env.INPUT_FILES
-    ? process.env.INPUT_FILES.split('\n')
-    : '.'
-  await execa('git', ['add', files])
-
-  // Commit the changes.
-  const message = process.env.INPUT_MESSAGE || 'Automated commit'
-  await execa('git', ['commit', '-m', message])
-
-  // Push the changes back to the branch.
-  const actor = process.env.INPUT_ACTOR || process.env.GITHUB_ACTOR
-  const token = process.env.INPUT_TOKEN
-  const repo = process.env.GITHUB_REPOSITORY
-  const origin = token
-    ? `https://${actor}:${token}@github.com/${repo}.git`
-    : 'origin'
-  await execa('git', ['push', origin, `HEAD:${branch}`])
+      // Push the changes back to the branch.
+      const actor = process.env.INPUT_ACTOR || process.env.GITHUB_ACTOR
+      const token = process.env.INPUT_TOKEN
+      const repo = process.env.GITHUB_REPOSITORY
+      const origin = token
+        ? `https://${actor}:${token}@github.com/${repo}.git`
+        : 'origin'
+      await execa('git', ['push', origin, `HEAD:${branch}`]) 
+    }
+  }
 }
 
 run().catch(err => {
