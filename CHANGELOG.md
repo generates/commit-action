@@ -1,0 +1,99 @@
+# add-changeset
+
+## 1.2.2
+
+### Patch Changes
+
+- 6c3c6c7: Still trying to fix branch logic
+
+## 1.2.1
+
+### Patch Changes
+
+- bbf4b15: Trying to fix branch logic
+
+## 1.2.0
+
+### Minor Changes
+
+- ca6220b: Trying workflow_run trigger
+
+### Patch Changes
+
+- 54e9ce7: Fixing origin logic
+- 2f0dc6c: Fixing branch name logic
+- e6beccc: Using GH_PAT
+
+## 1.1.1
+
+### Patch Changes
+
+- 7e9d1bc: Change author to generates bot
+
+## 1.1.0
+
+### Minor Changes
+
+- 631251a: Adding before_commit input and execution logic
+
+### Patch Changes
+
+- 71f8bc0: Update dependency @actions/core to ^1.2.6
+
+## 1.0.8
+
+### Patch Changes
+
+- 7154355: Adding duplicate package name check
+
+## 1.0.7
+
+### Patch Changes
+
+- 47471d8: Fixing label context path
+
+## 1.0.6
+
+### Patch Changes
+
+- 98be28d: Adding debug statements
+
+## 1.0.5
+
+### Patch Changes
+
+- 82da97c: Fixing destructure error
+
+## 1.0.4
+
+### Patch Changes
+
+- 4864ac7: Unignoring monorepo-app because of action error
+
+## 1.0.3
+
+### Patch Changes
+
+- b37b158: Unignoring changeset cli
+
+## 1.0.2
+
+### Patch Changes
+
+- 2a725a8: Switching from pnpm to npm for this action
+
+## 1.0.1
+
+### Patch Changes
+
+- fca0839: Fixing missing dependencies and typos
+
+## 1.0.0
+
+### Major Changes
+
+- c8cbe81: First version
+
+### Patch Changes
+
+- d96dcf1: Fixing missing dependencies and typos
