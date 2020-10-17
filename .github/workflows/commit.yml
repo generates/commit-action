@@ -1,0 +1,37 @@
+name: Commit
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: The git branch you want to commit to.
+        required: false
+      files:
+        description: The changed files you want included in the commit.
+        required: false
+      message:
+        description: The commit message.
+        required: false
+      actor:
+        description: Who to author the commit as.
+        required: false
+      token:
+        description: The GitHub token to use to push the commit to GitHub.
+        required: false
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      DEBUG: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Make Change
+        run: echo "Racks 2 Skinny" > commits/$(date +%s).txt
+      - name: Commit Changes
+        uses: ./
+        with:
+          token: ${{ secrets.GH_PAT }}
