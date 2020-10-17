@@ -20,5 +20,4 @@ jobs:
       - name: Commit Lint Fixes
         uses: ./
         with:
-          token: ${{ secrets.GH_PAT }}
           message: Lint fixes
