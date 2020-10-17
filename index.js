@@ -15,6 +15,9 @@ async function run () {
 
   // If this is not a PR, use the current branch.
   if (!branch) branch = process.env.GITHUB_REF
+  
+  // Output the branch that will be used.
+  logger.info('Using branch:', branch)
 
   // TODO: check if branch exists and create it if necessary.
   
@@ -28,7 +31,8 @@ async function run () {
     await execa('git', ['add', files])
     
     // Check if there are staged changes.
-    const { stdout: hasStaged } = await execa('git', ['diff', '--staged'])
+    const args = ['diff', '--staged', '--names-only']
+    const { stdout: hasStaged } = await execa('git', args)
     if (hasStaged) {
       // Commit the changes.
       const message = process.env.INPUT_MESSAGE || 'Automated commit'
@@ -42,7 +46,11 @@ async function run () {
         ? `https://${actor}:${token}@github.com/${repo}.git`
         : 'origin'
       await execa('git', ['push', origin, `HEAD:${branch}`]) 
+    } else {
+      logger.info('No staged files', { hasStaged })
     }
+  } else {
+     logger.info('No local changes', { hasChanges })
   }
 }
 
