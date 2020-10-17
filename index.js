@@ -31,7 +31,7 @@ async function run () {
     await execa('git', ['add', files])
     
     // Check if there are staged changes.
-    const args = ['diff', '--staged', '--names-only']
+    const args = ['diff', '--staged', '--name-only']
     const { stdout: hasStaged } = await execa('git', args)
     if (hasStaged) {
       // Commit the changes.
