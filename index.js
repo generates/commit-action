@@ -34,6 +34,12 @@ async function run () {
     const args = ['diff', '--staged', '--name-only']
     const { stdout: hasStaged } = await execa('git', args)
     if (hasStaged) {
+      // Configure the git user.
+      const author = 'github-actions[bot]'
+      await execa('git', ['config', '--global', 'user.name', author])
+      const email = 'github-actions[bot]@users.noreply.github.com'
+      await execa('git', ['config', '--global', 'user.email', email])
+      
       // Commit the changes.
       const message = process.env.INPUT_MESSAGE || 'Automated commit'
       await execa('git', ['commit', '-m', message])
