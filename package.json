@@ -18,6 +18,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
+    "@generates/logger": "0.0.8",
     "@ianwalter/dot": "^1.0.5",
     "execa": "^4.0.3"
   },
