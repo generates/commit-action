@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "commit-action",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Automate git commits with GitHub Actions",
   "scripts": {
     "lint": "eslint ."
