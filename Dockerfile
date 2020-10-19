@@ -1,6 +1,6 @@
 FROM ianwalter/pnpm:v1.1.0
 
-RUN mkdir =p /opt/commit-action
+RUN mkdir -p /opt/commit-action
 
 COPY pnpm-lock.yaml /opt/commit-action
 COPY package.json /opt/commit-action
