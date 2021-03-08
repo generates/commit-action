@@ -1,5 +1,11 @@
 # commit-action
 
+## 1.0.2
+
+### Patch Changes
+
+- 603c989: Publishing as package
+
 ## 1.0.1
 
 ### Patch Changes
