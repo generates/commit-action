@@ -7,7 +7,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     container:
-      image: ianwalter/pnpm:v1.1.0
+      image: node:15-buster
     timeout-minutes: 10
     steps:
       - name: Checkout
@@ -17,17 +17,11 @@ jobs:
           # generate changelogs with the correct commits.
           fetch-depth: 0
       - name: Install
-        run: pnpm i
+        run: yarn
       - name: Changesets
-        uses: changesets/action@master
+        uses: changesets/action@b3300fad33b6ab794313da28d27424c0e2f78991
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
           publish: npx changeset publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Update Lockfile
-        run: pnpm i
-      - name: Commit Changes
-        uses: ./
-        with:
-          token: ${{ secrets.GH_PAT }}
-        

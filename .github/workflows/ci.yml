@@ -8,15 +8,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: ianwalter/pnpm:v1.1.0
+      image: node:15-buster
     timeout-minutes: 3
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install
-        run: pnpm i
+        run: yarn
       - name: Lint
-        run: pnpm lint -- --fix
+        run: yarn lint --fix
       - name: Commit Lint Fixes
         uses: ./
         with:

@@ -1,10 +1,10 @@
-FROM ianwalter/pnpm:v1.1.0
+FROM node:15-buster
 
 RUN mkdir -p /opt/commit-action
 
-COPY pnpm-lock.yaml /opt/commit-action
+COPY yarn.lock /opt/commit-action
 COPY package.json /opt/commit-action
-RUN cd /opt/commit-action && pnpm i && cd $HOME
+RUN cd /opt/commit-action && yarn && cd $HOME
 
 COPY index.js /opt/commit-action
 

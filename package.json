@@ -1,8 +1,11 @@
 {
-  "private": true,
-  "name": "commit-action",
+  "name": "@generates/commit-action",
   "version": "1.0.1",
   "description": "Automate git commits with GitHub Actions",
+  "main": "index.js",
+  "bin": {
+    "commit": "index.js"
+  },
   "scripts": {
     "lint": "eslint ."
   },
@@ -13,6 +16,13 @@
   "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/generates/commit-action/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/ianwalter"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "homepage": "https://github.com/generates/commit-action#readme",
   "dependencies": {
