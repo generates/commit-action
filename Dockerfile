@@ -1,4 +1,4 @@
-FROM node:15-buster
+FROM node:16-buster
 
 RUN mkdir -p /opt/commit-action
 
