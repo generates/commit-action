@@ -348,10 +348,10 @@
     eslint-plugin-promise "^4.2.1"
     eslint-plugin-standard "^4.1.0"
 
-"@ianwalter/renovate-config@^1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@ianwalter/renovate-config/-/renovate-config-1.4.4.tgz#59d03e23bf1215ca005ecfa5cbdb82692e561043"
-  integrity sha512-LJRn/jAwIrUWfH5gwibOsUVQeXJVnPhoML0Yybx4xKvowyIKY2nwzvXvR1xPa2zK4EH+EW7WeQ/+Z1vctp67XA==
+"@ianwalter/renovate-config@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@ianwalter/renovate-config/-/renovate-config-1.5.0.tgz#19529517c87296622d72b16008043358b957c038"
+  integrity sha512-XVALXzdi4LT9nJE/m7KjjHrygc5wYjijkh3jZj8XMvhckcum0GqVfXk33mZ1ofEWBuGC8DhWM0imL8pC1R3MiA==
 
 "@manypkg/find-root@^1.1.0":
   version "1.1.0"
